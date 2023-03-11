@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: 100%;
+    src: url("400-normal-100p.ttf");
+}
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: 100%;
+    src: url("400-italic-100p.ttf");
+}
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: 75%;
+    src: url("400-normal-75p.ttf");
+}
+
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: 100%;
+    src: url("700-normal-100p.ttf");
+}
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: 100%;
+    src: url("700-italic-100p.ttf");
+}
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: 75%;
+    src: url("700-normal-75p.ttf");
+}
+
+@font-face {
+    font-family: "TW Cen MT";
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: 75%;
+    src: url("800-normal-75p.ttf");
+}
+
+/* Duplicates */
+/* Same as above, but can be used by canvas. In CSS, specify `font-stretch` instead. */
+
+@font-face {
+    font-family: "TW Cen MT Condensed";
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: 100%;
+    src: url("400-normal-75p.ttf");
+}
+@font-face {
+    font-family: "TW Cen MT Condensed";
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: 100%;
+    src: url("700-normal-75p.ttf");
+}
+
+@font-face {
+    font-family: "TW Cen MT Condensed";
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: 100%;
+    src: url("800-normal-75p.ttf");
+}
+
+/* “TW Cen MT” is short for Twentieth Century™ by Monotype. Who would’ve known */

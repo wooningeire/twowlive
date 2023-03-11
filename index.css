@@ -1,0 +1,466 @@
+@keyframes display-flash {
+    0% {
+        box-shadow: 0 0 0 8px hsl(var(--hue), 30%, 50%);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px hsl(var(--hue), 100%, 80%);
+    }
+
+    100% {
+        box-shadow: 0 0 0 8px hsl(var(--hue), 30%, 50%);
+    }
+}
+
+:root {
+    --font: TW Cen MT, Overpass, sans-serif;
+    --hue: 240;
+
+    --shadow-left: 0;
+    --shadow: var(--shadow-left) 4px 12px #0002;
+}
+
+.green:root {
+    --hue: 90;
+}
+
+* {
+    outline: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: #0000;
+}
+
+body,
+input,
+textarea,
+button {
+    font-family: var(--font);
+    font-size: 22px;
+    font-weight: 700;
+    font-stretch: 75%;
+    color: #fff;
+}
+
+input,
+textarea,
+button {
+    border: 0;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+    margin: 4px 8px;
+    background: #fff2;
+    box-shadow: var(--shadow);
+}
+
+button:not(:disabled):hover,
+input[type="button"]:not(:disabled):hover,
+input[type="submit"]:not(:disabled):hover {
+    background: #fff4;
+}
+
+button:not(:disabled):active,
+input[type="button"]:not(:disabled):active,
+input[type="submit"]:not(:disabled):active {
+    filter: brightness(60%);
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled {
+    opacity: .5;
+}
+
+textarea,
+[contenteditable],
+input[type=""],
+input[type="text"],
+input[type="number"] {
+    margin: 4px 0;
+    background: hsl(var(--hue), 30%, 10%);
+    box-shadow: var(--shadow);
+}
+
+.code {
+    font-size: 75%;
+    font-family: monospace;
+}
+
+p + p,
+p + br + p {
+    margin-top: 16px;
+}
+
+a {
+    color: #f8fa;
+}
+
+a:hover {
+    color: #f8ff;
+}
+
+a:active {
+    color: #f8f8;
+}
+
+ul.bars {
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+}
+
+::selection {
+    background: hsl(var(--hue), 100%, 80%);
+}
+
+body {
+    margin: 0;
+    background: hsl(var(--hue), 30%, 10%);
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    --controls-height: 300px;
+}
+
+main > .display {
+    height: calc(100vh - var(--controls-height)); /* find flex-based alternative if available */
+    background: hsl(var(--hue), 30%, 15%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+main > .display > canvas {
+    margin: 0 auto;
+    max-width: 85%;
+    max-height: 85%;
+    box-shadow: 0 4px 32px #0007;
+    animation: display-flash 4s infinite ease;
+}
+
+main > .dashboard {
+    height: var(--controls-height);
+    background: hsl(var(--hue), 30%, 20%);
+    
+    display: flex;
+}
+
+main > .dashboard textarea {
+    width: 100%;
+    height: 144px;
+    resize: vertical;
+}
+
+main > .dashboard > .state-dependent {
+    width: 55%;
+
+    display: flex;
+}
+
+main > .dashboard > .state-dependent > .tabs {
+    padding-left: 16px;
+}
+
+main > .dashboard > .state-dependent > .tabs > li {
+    padding-right: 8px;
+    text-align: right;
+    background: hsl(var(--hue), 30%, 30%);
+}
+
+main > .dashboard > .state-dependent > .tabs > li:not(.active):hover {
+    background: hsla(var(--hue), 30%, 30%, .5);
+}
+
+main > .dashboard > .state-dependent > .inputs {
+    background: hsl(var(--hue), 30%, 30%);
+}
+
+main > .dashboard > .state-dependent > .switch-side:after {
+    content: "🠞";
+}
+
+main > .dashboard > .state-independent {
+    flex: 1;
+
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+main > .dashboard > .state-independent > .tabs {
+    padding-right: 16px;
+}
+
+main > .dashboard > .state-independent > .tabs > li {
+    padding-left: 8px;
+    text-align: left;
+    background: hsl(var(--hue), 30%, 10%);
+}
+
+main > .dashboard > .state-independent > .tabs > li:not(.active):hover {
+    background: hsla(var(--hue), 30%, 10%, .5);
+}
+
+main > .dashboard > .state-independent > .inputs {
+    background: hsl(var(--hue), 30%, 10%);
+}
+
+main > .dashboard > .state-independent > .switch-side:after {
+    content: "🠜";
+}
+
+main > .dashboard > * > .tabs {
+    width: 160px;
+    padding: 16px 0;
+    user-select: none;
+}
+
+main > .dashboard > * > .tabs > li {
+    height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 28px;
+}
+
+main > .dashboard > * > .tabs > li + li {
+    margin-top: 8px;
+}
+
+main > .dashboard > * > .tabs > li.disabled {
+    opacity: .5;
+}
+
+main > .dashboard > * > .tabs > li:not(.active) {
+    background: #0000;
+}
+
+main > .dashboard > * > .inputs {
+    flex: 1;
+    padding: 8px 16px;
+    overflow-y: auto;
+
+    font-size: 18px;
+}
+
+main > .dashboard > * > .inputs > .disabled {
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+}
+
+main > .dashboard > * > .inputs > :not(.active) {
+    display: none;
+}
+
+main > .dashboard > * > .inputs > * > table.bars {
+    width: 100%;
+    background: hsl(var(--hue), 30%, 5%);
+    border-spacing: 0;
+}
+
+main > .dashboard > * > .inputs > * > table.bars:empty {
+    padding-bottom: 24px;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded {
+    min-height: 20px;
+    font-size: 22px;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr {
+    padding: 0 8px;
+    background: hsl(var(--hue), 30%, 15%);
+
+    display: flex;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr:nth-child(even) {
+    background: hsl(var(--hue), 30%, 20%);
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr > td {
+    padding-right: 4px;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr > td:first-child {
+    padding-left: 4px;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr > td:last-child {
+    flex-grow: 1;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded > tr > td > * {
+    font-size: 75%;
+}
+
+main > .dashboard > * > .inputs > * > table.bars.banded button,
+main > .dashboard > * > .inputs > * > table.bars.banded input {
+    font-size: initial;
+}
+
+main > .dashboard > * > .inputs .responses-panel > tr > td:first-child {
+    width: 96px;
+    white-space: nowrap;
+}
+
+main > .dashboard > * > .inputs .responses-panel > tr > td.name {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+main > .dashboard > * > .inputs .responses-panel > tr > td.responses > .response {
+    display: flex;
+}
+
+main > .dashboard > * > .inputs .responses-panel > tr > td.responses > .response > input[type="text"] {
+    width: 100%;
+    flex-shrink: 1;
+}
+
+main > .dashboard > * > .inputs .responses-panel > tr > td.responses > .response .word-count {
+    flex-basis: 12px;
+    margin-left: 8px;
+    text-align: right;
+    opacity: .6;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main > .dashboard > * > .inputs .prompt-list > tr.current {
+    box-shadow: -8px 0 6px -6px hsl(var(--hue), 30%, 60%),
+                8px 0 6px -6px hsl(var(--hue), 30%, 60%),
+                0 0 0 4px hsl(var(--hue), 100%, 80%) inset;
+}
+
+main > .dashboard > * > .inputs .prompt-list > tr.passed {
+    opacity: .5;
+    filter: brightness(60%);
+    pointer-events: none;
+}
+
+main > .dashboard > * > .inputs .prompt-list > tr > td:first-child {
+    min-width: 28px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+main > .dashboard > * > .inputs .prompt-list > tr > td {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main > .dashboard > * > .inputs .prompt-list > tr > td > input[type="text"] {
+    width: 100%;
+}
+
+main > .dashboard > * > .inputs .contestant-list > tr.eliminated {
+    --hue: 0;
+}
+
+main > .dashboard > * > .inputs .contestant-list > tr > td {
+    display: flex;
+}
+
+main > .dashboard > * > .inputs .contestant-list > tr > td:last-child input[type="text"] {
+    width: 100%;
+}
+
+main > .dashboard > * > .inputs h1,
+main > .dashboard > * > .inputs h2,
+main > .dashboard > * > .inputs h3,
+main > .dashboard > * > .inputs h4,
+main > .dashboard > * > .inputs h5,
+main > .dashboard > * > .inputs h6 {
+    font-stretch: 100%;
+}
+
+main > .dashboard > * > .inputs p em {
+    font-style: normal;
+}
+
+main > .dashboard > * > .inputs p.normal {
+    color: #fff9;
+}
+
+main > .dashboard > * > .inputs p.normal em {
+    color: #fff;
+}
+
+main > .dashboard > * > .inputs p.explain {
+    font-size: 75%;
+    font-stretch: 100%;
+    opacity: .6;
+}
+
+main > .dashboard > * > .inputs p.explain em {
+    text-decoration: underline;
+}
+
+main > .dashboard > * > .inputs input.small {
+    width: 56px;
+    vertical-align: middle;
+}
+
+main > .dashboard > * > .inputs input.right {
+    text-align: right;
+}
+
+main > .dashboard > * > .inputs button[name="advance"]:before {
+    content: "➤";
+}
+
+main > .dashboard > * > .switch-side {
+    text-align: center;
+    display: none;
+}
+
+noscript {
+    width: 100vw;
+    height: 100vh;
+    font-size: 48px;
+    background: hsl(var(--hue), 30%, 50%);
+    padding: 24px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+noscript p.subtle {
+    opacity: .6;
+    font-size: 75%;
+    margin-top: 60px;
+}
+
+@media (max-width: 1280px) {
+    main > .dashboard > .state-dependent,
+    main > .dashboard > .state-independent {
+        width: 100%;
+    }
+
+    main > .dashboard > :not(.active) {
+        display: none;
+    }
+
+    main > .dashboard > * > .switch-side {
+        display: initial;
+    }
+}

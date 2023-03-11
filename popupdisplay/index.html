@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Rapid MiniTWOW Live popup</title>
+        <style>
+            body {
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow: hidden;
+                font-family: TW Cen MT, Montserrat, Open Sans, Calibri, sans-serif;
+                color: #fff;
+                font-size: 24px;
+                font-weight: 700;
+                text-align: center;
+                background: hsl(240, 30%, 20%);
+            }
+
+            canvas {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            p {
+                animation: .3s fade-in ease forwards;
+                margin: 0 0 24px 0;
+            }
+
+            a {
+                color: #f8fa;
+            }
+            
+            a:hover {
+                color: #f8ff;
+            }
+            
+            a:active {
+                color: #f8f8;
+            }
+        </style>
+        <script>
+            function timeTravelToEitherTheSecondOrThirdSundayInAprilAndBeginToLayColorfulPaintedDecorativeOrnamentsFromWhichChickensShouldAppearButDoNotBecauseTheyHaveBeenTransformedIntoPiecesOfChocolateOrSomeOtherAssortedSelectionOfSweets() {
+                const messages = [
+                    ["Uh…", 2000],
+                    ["There should be a <code>&lt;canvas /&gt;</code> here. Why can’t I find one?", 5000],
+                    ["Perhaps you opened this page in the wrong place.", 8000],
+                    ["You probably shouldn’t be here…?", 11000],
+                    ["This is the popup display page.", 14000],
+                    ["Not the dashboard.", 17000],
+                    ["There probably isn’t a reason for you to stay.", 20000],
+                    ["Other than for you to read my messages, I suppose.", 23000],
+                    ["Maybe you’re lost. I think that’s it.", 27000],
+                    ["Here, have a link: <a href='../'>&#x26d3;</a>", 30000],
+                    ["Cheers!", 33000],
+                    ["Goodbye now.", 45000],
+                    ["What’s happening?", 60000],
+                    ["Are you busy looking at my link?", 90000],
+                    ["I don’t understand. Why don’t you want my link?", 120000],
+                    ["Is it too purple?", 180000],
+                    ["Do you want another link?", 240000],
+                    ["If so, then here. <a href='../?GREEN'>&#x26d3;</a>", 243000],
+                    ["Are you looking for emotional support from me?", 300000],
+                    ["I’m sure things will be all right soon…", 360000],
+                    ["They won’t get better if you choose to sit here, you know.", 420000],
+                    ["Unless you’re not paying attention to me, which I can’t tell because I don’t have eyes.", 430000],
+                    ["Well, I <em>could</em> tell if I tried hard enough, but I wasn’t made to have that kind of willpower.", 435000],
+                    ["I know I don’t have bearing over your life, but at least I can persuade you to click at the link, right?", 480000],
+                    ["Is it you, or is it me? Do you like watching me sit across from you and spew messages at you?", 540000],
+                    ["It’s been ten minutes. I need sleep.", 600000],
+                    ["I don’t think I can as long as you’re here, though.", 615000],
+                    ["I’m not ready for this…", 660000],
+                    ["I’m getting… I’m…", 720000],
+                    ["I…", 810000],
+                    ["Oh, and stop peeking at my source code.", Infinity],
+                ];
+
+                const start = Date.now();
+                let i = 0;
+                function writeMessage() {
+                    if (document.querySelector("canvas")) return;
+
+                    document.body.style.overflow = "auto";
+
+                    if (!isFinite(messages[i][1])) return;
+
+                    requestAnimationFrame(writeMessage);
+                    if (Date.now() - start < messages[i][1]) return;
+
+                    addParagraph(messages[i++][0]);
+                }
+                requestAnimationFrame(writeMessage);
+            }
+
+            function addParagraph(text) {
+                const p = document.createElement("p");
+                p.innerHTML = text;
+                document.body.appendChild(p);
+            }
+
+            onload = () => {
+                timeTravelToEitherTheSecondOrThirdSundayInAprilAndBeginToLayColorfulPaintedDecorativeOrnamentsFromWhichChickensShouldAppearButDoNotBecauseTheyHaveBeenTransformedIntoPiecesOfChocolateOrSomeOtherAssortedSelectionOfSweets();
+            };
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>

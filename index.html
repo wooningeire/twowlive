@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Rapid MiniTWOW Live</title>
+        <meta charset="UTF-16" />
+
+        <script src="./index.js" type="module" defer></script>
+
+        <link href="./index.css" rel="stylesheet" />
+        <link href="./twcenmt/index.css" rel="stylesheet" />
+        <link href="http://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <noscript>
+            <p>This browser is currently blocking JavaScript, which this page requires to function.</p>
+            <p class="subtle">Try changing the browser settings and then reloading.</p>
+        </noscript>
+
+        <main>
+            <section class="display">
+                <canvas></canvas>
+            </section>
+
+            <section class="dashboard">
+                <div class="state-dependent active">
+                    <ul class="tabs bars"></ul>
+
+                    <div class="inputs">
+                        <div data-state="standby" data-label="Standby">
+                            <button name="advance"></button>
+                        </div>
+
+                        <div data-state="lobby" data-label="Lobby">
+                            <p class="explain">Type a newline-separated list of contestant names.</p>
+                            <textarea></textarea>
+                            <button name="add">Add contestants</button><br />
+                            <p class="explain">At least two contestants must be in the game before it can start.</p>
+                            <p class="explain">There must be a next prompt available before starting the next round.</p>
+                            <button name="advance" disabled></button>
+                        </div>
+
+                        <div data-state="responding" data-label="Responding">
+                            <p class="explain">Paste each contestant’s response into the labeled input box.</p>
+                            <table class="responses-panel bars banded"></table>
+                            <button name="advance"></button>
+                        </div>
+
+                        <div data-state="voting" data-label="Voting">
+                            <p class="explain">Place on each line a comma-separated list of votes cast by a single user. Format votes similarly to <a href="https://www.youtube.com/watch?v=728p6PDgCIs&t=1m18s" target="_blank">as they would be in TWOW</a>, though brackets are not necessary.</p>
+                            <textarea></textarea>
+                            <button name="advance"></button>
+                        </div>
+    
+                        <div data-state="reveal" data-label="Reveal">
+                            <button name="advance"></button>
+                        </div>
+                        
+                        <div data-state="leaderboard" data-label="Leaderboard">
+                            <p class="explain">There must be a next prompt available before starting the next round.</p>
+                            <button name="advance"></button>
+                        </div>
+                    </div>
+
+                    <button class="switch-side no-margin"></button>
+                </div>
+
+                <div class="state-independent">
+                    <ul class="tabs bars"></ul>
+
+                    <div class="inputs">
+                        <div data-state="prompt loadout" data-label="Prompt loadout">
+                            <p class="normal">From this point on, eliminate contestants at a rate of <input class="small right" name="elimination-rate" type="text" /></p>
+                            <p class="explain">If this rate is kept for the rest of the game and all contestants respond, there will be a total of <em data-name="n-planned-rounds">0</em> round<span data-name="n-planned-rounds-plural">s</span>.</p>
+                            <p class="explain">This round, <em data-name="n-eliminations">0</em> contestant<span data-name="n-eliminations-plural">s</span> <span data-name="n-eliminations-predicate">will be</span> eliminated, leaving <em data-name="n-survivors">0</em>.</p>
+
+                            <!-- Unlike contestant response, which is represented in the display, the completion of upcoming prompts is not shown. `Round` objects will call to the prompts stored here when constructed. -->
+                            <table class="prompt-list bars banded"></table>
+                            <button name="add-prompt">+</button>
+                        </div>
+
+                        <div data-state="contestant list" data-label="Contestant list">
+                            <table class="contestant-list bars banded"></table>
+                            <p class="explain">Set contestants during the Lobby phase.</p>
+                            <p class="explain">Removed contestants’ responses will be kept in the current round’s voting if it has already started.</p>
+                        </div>
+
+                        <div data-state="previous results" data-label="Previous results">
+                        </div>
+
+                        <div data-state="viewport" data-label="Viewport">
+                            <p class="explain">Move the display to a popup window to give the display its own separate window at full resolution, and also to make it easier to target with some recording softwares.</p>
+                            <button name="popup">Move display to popup window</button>
+                        </div>
+
+                        <div data-state="about" data-label="About">
+                            <h2>Live Rapid MiniTWOW hosting tool</h2>
+
+                            <p class="normal">This tool was created and designed by <em>wooningc</em>, 2019</p>
+                            <p class="normal">This runs a small-scale game based on “<a href="https://www.youtube.com/watch?v=S64R-_LVHuY" target="_blank">Ten Words of Wisdom</a>” by <em>carykh</em></p>
+                            <p class="normal">Rapid MiniTWOWs were popularized by <em>alexlion0511</em> (I think) and <em>DemiPixel</em></p>
+
+                            <br />
+
+                            <p class="normal">The purpose of this tool is to create visuals intended for a livestreamed season of a Rapid MiniTWOW.</p>
+                            <p class="normal">Ten Words of Wisdom, abbreviated as TWOW, is a game that tests contestants’ ability to write a clever ten-word response given a prompt. Viewers vote on these responses based on their quality and cleverness, assigning to each a relative score. These scores are averaged, and the lowest-scoring contestants are eliminated from the game, which then progresses to the next round with a new prompt.</p>
+                            <p class="normal">A Rapid MiniTWOW functions much more quickly and at a much smaller scale than a larger game of TWOW. Responding and voting periods are shortened from the original three days to about three minutes. One season usually consists of less than six rounds.</p>
+                            <p class="normal">Individually, this tool does not have the ability to record or supply data to a livestream. Instead, move the display to a separate window to maximize the output resolution and use software such as <a href="https://obsproject.com/download" target="_blank">Open Broadcaster Software</a> to record it. (Screen recorders may have to do some troubleshooting [<a href="https://www.youtube.com/watch?v=4yaQfjam0xo">Google Chrome</a>] to target a browser)</p>
+                            <p class="normal">Games are not saved across sessions. Navigating away from the page will cause the current game’s data to be lost.</p>
+                        </div>
+                    </div>
+
+                    <button class="switch-side no-margin"></button>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
